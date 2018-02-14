@@ -4,13 +4,9 @@ const app = getApp()
 
 Page({
   data: {
-    array: [{
-      message: 'foo',
-    }, {
-      message: 'bar'
-    }],
+    tabList: ["节目","详情"],
     currentTab: 0,
-    items: [],
+    items: [1,2,3,4,5,6,7],
     hidden: false,
     userInfo: {},
     hasUserInfo: false,
@@ -80,6 +76,9 @@ Page({
       })
     }
   },
+
+
+  
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
