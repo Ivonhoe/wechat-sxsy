@@ -13,22 +13,23 @@
   <view wx:for="{{tabList}}" class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">节目</view>
 </view> -->
 
-
-<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
-  <image class="home-image" src="/image/home.jpeg" mode='scaleToFill'> </image>
-  <view wx:for="{{items}}" class='flex-wrap' style='height: 50px;width :100%;background: #fff;flex-direction :row;'>
-    <text class='playList-index'>1</text>
-    <view class='flex-wrap' style='flex-direction :column;'>
-      <text>我喜欢卓达人的臭脚</text>
-      <view>
-        <text>时长</text>
-        <text>播放数量</text>
-        <text>上传日期</text>
+<view>
+  <scroll-view class="playList" scroll-top="{{scrollTop}}" scroll-y="true" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
+    <image class="home-image" src="/image/home.jpeg" mode='scaleToFill'> </image>
+    <view wx:for="{{items}}" class='playList-item'>
+      <text class='playList-index'>1</text>
+      <view class='flex-wrap' style='flex-direction :column;'>
+        <text>我喜欢卓大人的臭脚</text>
+        <view>
+          <text>时长</text>
+          <text>播放数量</text>
+          <text>上传日期</text>
+        </view>
       </view>
     </view>
-  </view>
-</scroll-view>
+  </scroll-view>
 
-<view >
+  <view class='playBar'>
     <text class='playList-index'>1</text>
+  </view>
 </view>

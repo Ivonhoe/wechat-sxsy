@@ -29,10 +29,32 @@
   height: 245px;
 }
 
+.playList {
+  height:100%;
+  margin-bottom: 46px;
+}
+
 .playList-index {
   height: 45px;
   width :45px;
   display: flex;
   justify-content: center;
   align-items: center
+}
+
+.playList-item {
+  display:flex;
+  height: 50px;
+  width :100%;
+  background: #fff;
+  flex-direction :row;
+}
+
+.playBar {
+  display:flex;
+  position:fixed;
+  bottom:0;
+  background:#fff;
+  width: 100%;
+  height:46px
 }
