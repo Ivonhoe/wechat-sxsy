@@ -2,8 +2,8 @@
 //获取应用实例
 const app = getApp()
 const backgroundAudioManager = wx.getBackgroundAudioManager();
-const defaultTitle='书香岁月'//"圣人请卸妆"
-const defaultTable = 'ShuXiangSuiYue'//'ShengRenQingXieZhuang'//
+const defaultTitle= '书香岁月'//"圣人请卸妆"
+const defaultTable = 'ShuXiangSuiYue'//ShengRenQingXieZhuang'//
 
 var timeSet;
 var isStoped = false;
@@ -91,8 +91,8 @@ Page({
 
   onShareAppMessage: function () {
     return {
-      title: 'haha',
-      path: '/page/user?id=123'
+      title: defaultTitle,
+      path: '/pages/index/index'
     }
   },
 
@@ -131,7 +131,7 @@ Page({
         playIcon: '/image/icon_start.png'
       })
 
-      wx.showToast({ title: "on stop" })
+      // wx.showToast({ title: "on stop" })
     })
 
     wx.onBackgroundAudioPause(() => {
@@ -140,8 +140,7 @@ Page({
         playIcon: '/image/icon_start.png'
       })
 
-      wx.showToast({ title: "on pause" })
-
+      // wx.showToast({ title: "on pause" })
     })
 
     wx.onBackgroundAudioPlay(() => {
@@ -151,7 +150,7 @@ Page({
         playIcon: '/image/icon_pause.png'
       })
 
-      wx.showToast({ title: "on pla" })
+      // wx.showToast({ title: "on pla" })
     })
 
     // isPause = false;

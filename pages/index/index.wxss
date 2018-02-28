@@ -42,7 +42,7 @@
   justify-content: center;
   align-items: center;
   color: #9b9b9b;
-  background-color: #f0f4f7;
+  background-color: #fff;
 }
 
 .playList-item {
@@ -50,11 +50,11 @@
   height: 60px;
   width: 100%;
   flex-direction: row;
-  background-color: #f0f4f7;
+  background-color: #fff;
 }
 
 .textFont-playItem {
-  font-size: small;
+  font-size: 24rpx;
   color: #94989b;
 }
 
