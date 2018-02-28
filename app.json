@@ -1,14 +1,12 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs",
     "pages/aboutus/aboutus"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "书香岁月",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }
-          
