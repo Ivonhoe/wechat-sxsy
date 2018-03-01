@@ -220,4 +220,11 @@ Page({
       console.log('elsessssss')
     }
   },
+
+  onMoreDetailTap: function(e){
+    var id = e.currentTarget.id
+    var item = this.data.items[id]
+
+    console.log('-----------------')
+  }
 })

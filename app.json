@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/aboutus/aboutus"
+    "pages/aboutus/aboutus",
+    "pages/showdetail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
