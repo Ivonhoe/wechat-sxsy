@@ -31,7 +31,7 @@
             <text class='textFont-playItem' style='margin-left:15px'>00:00</text>
           </view>
         </view>
-        <image src='/image/icon_playing.png' style='width:34px;height:24px;align-items:center;margin-right:5px' mode='aspectFill'></image>
+        <image src='/image/icon_playing.png' style='width:15px;height:20px;align-items:center;margin-right:5px' mode='aspectFit'></image>
         <view style='width:35px;height:100%;margin-right:10px;align-items:center;display:flex'>
           <image src='/image/icon_more.png' style='width:24px;height:24px' mode='aspectFill'></image>
         </view>
