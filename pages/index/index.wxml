@@ -25,15 +25,17 @@
         <text class='playList-index'>{{items.length-key}}</text>
         <view class='flex-wrap' style='width:100%;flex-direction:column;justify-content:center;'>
           <text style='color:#0f0f0f;margin-left:3px;font-size:32rpx'>{{item.title}}</text>
-          <view style=''>
+          <view style='align-items:center;display:flex;margin-top:5px'>
             <text class='textFont-playItem' style='margin-left:3px'>{{item.createTime}}</text>
-            <text class='textFont-playItem' style='margin-left:15px'>{{item.playCount}}</text>
-            <text class='textFont-playItem' style='margin-left:15px'>00:00</text>
+            <image src='/image/icon_listen.png' style='height:12px;width:12px;margin-left:15px;margin-top:-2px'></image>
+            <text class='textFont-playItem' style='margin-left:2px'>{{item.playCount}}</text>
+            <image src='/image/icon_clock.png' style='height:12px;width:12px;margin-left:15px;margin-top:-2px'></image>
+            <text class='textFont-playItem' style='margin-left:2px'>00:00</text>
           </view>
         </view>
-        <image src='/image/icon_playing.png' style='width:34px;height:24px;align-items:center;margin-right:5px' mode='aspectFill'></image>
+        <image src='/image/icon_playing.png' style='width:13px;height:20px;align-items:center;margin-right:15px' mode='aspectFit'></image>
         <view style='width:35px;height:100%;margin-right:10px;align-items:center;display:flex'>
-          <image src='/image/icon_more.png' style='width:24px;height:24px' mode='aspectFill'></image>
+          <image src='/image/icon_more.png' style='width:15px;height:15px' mode='aspectFill'></image>
         </view>
         <!-- <image></image> -->
       </view>
@@ -46,10 +48,10 @@
 
 
   <view class='playBar'>
-    <progress style='' percent="{{currentProgress}}" color="#09BB07" stroke-width="1" />
+    <progress style='' percent="{{currentProgress}}" color="#31c27c" stroke-width="1" />
     <view style='display:flex;height:100%;flex-direction:row;'>
       <image src='{{currentItem.coverImgUrl}}' bindtap="onPlayBarTap" style='border:0 solid;border-radius:40px;width:40px;height:38px;margin-left:6px;margin-top:8px;margin-bottom:5px;margin-right:6px;position:fixed' mode='scaleToFill'></image>
-      <image src='{{playIcon}}' bindtap="onPlayBarTap" class="{{showPlayBarButton?'show':'hide'}}" style='width:50px;height:50px;margin-left:1px;margin-top:2px;position:fixed' mode='scaleToFill'></image>
+      <image src='{{playIcon}}' bindtap="onPlayBarTap" class="{{showPlayBarButton?'show':'hide'}}" style='width:40px;height:40px;margin-left:6px;margin-top:8px;position:fixed' mode='scaleToFill'></image>
       <view style='display:flex;width:100%;height:100%;flex-direction:column;justify-content:center;margin-left:55px;margin-right:22px;'>
         <view style='display:flex;flex-direction:row;align-items:baseline;justify-content:space-between'>
           <text style='color:#0f0f0f;font-size:30rpx;width:100%;'>{{currentItem.title}}</text>
