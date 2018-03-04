@@ -1,0 +1,8 @@
+/* pages/showdetail/detail.wxss */
+.hide{
+ display: none;
+}
+
+.show{ 
+ display: block;
+}

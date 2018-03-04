@@ -13,6 +13,10 @@ Page({
    */
   onLoad: function (options) {
 
+    wx.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: '#947072'
+    });
   },
 
   /**

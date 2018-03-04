@@ -2,7 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/aboutus/aboutus",
-    "pages/showdetail/detail"
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
