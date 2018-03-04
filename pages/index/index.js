@@ -2,8 +2,13 @@
 //获取应用实例
 const app = getApp()
 const backgroundAudioManager = wx.getBackgroundAudioManager();
+
 const defaultTitle= "圣人请卸妆"
 const defaultTable = 'ShengRenQingXieZhuang'//
+
+const SORT_TYPE_DES = 0
+const SORT_TYPE_ASC = 1
+
 
 var timeSet;
 var isStoped = false;
@@ -25,6 +30,7 @@ Page({
     currentTime: "00:00",
     duration: "00:00",
     currentProgress: 0,
+    currentItemId: -1,
     playIcon: '/image/icon_start.png',
     showPlayBarButton: false,
     currentItem: { coverImgUrl: '/image/icon.jpeg', title: defaultTitle },
@@ -33,11 +39,16 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     autoplay: false,
+    sortType: SORT_TYPE_DES,
+    sortName: '倒序',
+    showMoreTips: false,
+    tapedIndex: -1,//点击的列表索引
   },
 
   onReady: function () {
     new app.data.AV.Query(defaultTable)
       .descending('createTime')
+      // .ascending('createTime')
       .find()
       // .then(items => this.setData({ items }))
       .then(items => this.setData({ items }))
@@ -96,10 +107,42 @@ Page({
     }
   },
 
+  sort: function () {
+    if (this.data.sortType == SORT_TYPE_DES) {
+      new app.data.AV.Query(defaultTable)
+        // .descending('createTime')
+        .ascending('createTime')
+        .find()
+        // .then(items => this.setData({ items }))
+        .then(items => this.setData({ items }))
+        .catch(console.error);
+      this.setData({
+        sortName: '顺序',
+        sortType: SORT_TYPE_ASC
+      })
+    } else if (this.data.sortType == SORT_TYPE_ASC) {
+      new app.data.AV.Query(defaultTable)
+        .descending('createTime')
+        // .ascending('createTime')
+        .find()
+        // .then(items => this.setData({ items }))
+        .then(items => this.setData({ items }))
+        .catch(console.error);
+      this.setData({
+        sortName: '倒序',
+        sortType: SORT_TYPE_DES
+      })
+    }
+
+  },
+
+  /**
+   * 播放
+   */
   play: function (e) {
     clearInterval(timeSet);
-    var id = e.currentTarget.id
-    var item = this.data.items[id]
+    var id = e.currentTarget.id;
+    var item = this.data.items[id];
 
     var timeCount = 0;
     var coverImgUrl = item.get('coverUrl')
@@ -114,6 +157,7 @@ Page({
         playPath64: playPath64,
         coverImgUrl: coverImgUrl,
       },
+      currentItemId: id,
     })
 
     wx.playBackgroundAudio({
@@ -123,13 +167,10 @@ Page({
     })
     // console.log("name:" + JSON.stringify(item) + ",title:" + item.get('title'))
 
+    // 进入停止状态，
     wx.onBackgroundAudioStop(() => {
       this.resetStatus()
       isStoped = true;
-
-      this.setData({
-        playIcon: '/image/icon_start.png'
-      })
 
       // wx.showToast({ title: "on stop" })
     })
@@ -168,11 +209,16 @@ Page({
   },
 
   resetStatus: function () {
-    //clearInterval(timeSet);
+    clearInterval(timeSet);
 
     this.setData({
       currentProgress: 0,
       currentTime: "00:00",
+      duration: "00:00",
+      playIcon: '/image/icon_start.png',
+      currentItemId: -1,
+      currentItem: { coverImgUrl: '/image/icon.jpeg', title: defaultTitle },
+      showPlayBarButton: false
     });
   },
 
@@ -194,19 +240,19 @@ Page({
     } else if (typeof (this.data.currentItem.playPath64) !== "undefined") {
       // 停止，重新播放，fixme 存在兼容性问题
       if (isStoped) {
-        wx.playBackgroundAudio({
-          dataUrl: this.data.currentItem.playPath64,
-          title: this.data.currentItem.title,
-          coverImgUrl: this.data.currentItem.coverImgUrl
-        })
+        // wx.playBackgroundAudio({
+        //   dataUrl: this.data.currentItem.playPath64,
+        //   title: this.data.currentItem.title,
+        //   coverImgUrl: this.data.currentItem.coverImgUrl
+        // })
 
-        isStoped = false
-        this.setData({
-          showPlayBarButton: true,
-          playIcon: '/image/icon_pause.png'
-        })
+        // isStoped = false
+        // this.setData({
+        //   showPlayBarButton: true,
+        //   playIcon: '/image/icon_pause.png'
+        // })
 
-        console.log('stop---------play')
+        // console.log('stop---------play')
       } else {
         backgroundAudioManager.pause()
 
@@ -220,4 +266,49 @@ Page({
       console.log('elsessssss')
     }
   },
+
+  onMoreTap: function (e) {
+    var id = e.currentTarget.id
+
+    this.setData({
+      showMoreTips: true,
+      tapedIndex: id
+    })
+  },
+
+  dismissMoreTips: function () {
+    this.setData({
+      showMoreTips: false,
+      tapedIndex: -1
+    })
+  },
+
+  onCommentTap: function () {
+    if (this.data.tapedIndex < 0) {
+      return
+    }
+    var item = this.data.items[this.data.tapedIndex]
+
+    var coverImgUrl = item.get('coverUrl')
+    var id = item.get('id')
+    var title = item.get('title')
+    var author = item.get('author')
+    var introduce = item.get('introduce')
+
+    this.setData({
+      tapedIndex: -1
+    })
+
+    wx.navigateTo({
+      url: '/pages/detail/detail?title=' + title + "&coverUrl=" + coverImgUrl + "&author=" + author + "&introduce=" + introduce
+    })
+    console.log('----------------- on comment tap')
+  },
+
+  // 节目简介
+  onIntroductionTap: function () {
+    wx.navigateTo({
+      url: '/pages/aboutus/aboutus'
+    })
+  }
 })

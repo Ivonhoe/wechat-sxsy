@@ -1,22 +1,37 @@
-// pages/aboutus/aboutus.js
+// pages/showdetail/detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    title: '',
+    author: '',
+    coverUrl: '/image/home.jpeg',
+    introduce: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
-      backgroundColor: '#947072'
+      backgroundColor: '#31c27c'
     });
+
+    wx.setNavigationBarTitle({
+      title: options.title//页面标题为路由参数
+    })
+
+    console.log(JSON.stringify(options))
+
+    this.setData({
+      title: options.title,
+      author: options.author,
+      coverUrl: options.coverUrl,
+      introduce: options.introduce=='null'?'':options.introduce
+    })
   },
 
   /**

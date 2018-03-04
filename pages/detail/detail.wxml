@@ -1,0 +1,15 @@
+<!--pages/showdetail/detail.wxml-->
+<view style='display:flex;flex-direction:row;padding-left:15px;height:90px;width:100%;background:#d9dde0;align-items:center'>
+  <image src='{{coverUrl}}' style='display:flex;height:80px;width:80px' mode='aspectFit'></image>
+
+  <view style='display:flex;flex-direction:column;margin-left:8px;'>
+    <text style='font-color:#9b9b9b;font-size:32rpx'>{{title}}</text>
+    <text style='display:flex;margin-top:3px;font-color:#94989b;font-size:26rpx'>{{author}}</text>
+  </view>
+</view>
+
+<view class="{{introduce==''?'hide':'show'}}" style='background:#d9dde0;'>
+  <text style='display:flex;padding-left:18px;padding-right:18px;padding-bottom:10px;font-color:#9b9b9b;font-size:28rpx;line-height:26px;'>{{introduce}}</text>
+</view>
+
+<button style='display:flex;height:30px;width:65px;font-size:30rpx;margin-top:20px;align-items:center;justify-content:center;color:white;background:#dd5e4b'>赞赏</button>

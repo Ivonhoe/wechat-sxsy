@@ -41,7 +41,7 @@
   width: 100%;
   flex-direction: row;
   background-color: #fff;
-  justify-content:space-between
+  justify-content: space-between;
 }
 
 .playList-index {
@@ -69,10 +69,14 @@
   flex-direction: column;
 }
 
-.hide{
- display: none;
+.hide {
+  display: none;
 }
 
-.show{ 
- display: block;
+.show {
+  display: block;
+}
+
+.showFlex {
+  display: flex;
 }
