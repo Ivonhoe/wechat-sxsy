@@ -112,11 +112,13 @@ Page({
         .find()
         // .then(items => this.setData({ items }))
         .then(items => this.setData({ items }))
+        .then(() => {
+          this.setData({
+            sortName: '顺序',
+            sortType: SORT_TYPE_ASC
+          })
+        })
         .catch(console.error);
-      this.setData({
-        sortName: '顺序',
-        sortType: SORT_TYPE_ASC
-      })
     } else if (this.data.sortType == SORT_TYPE_ASC) {
       new app.data.AV.Query(defaultTable)
         .descending('createTime')
@@ -124,11 +126,13 @@ Page({
         .find()
         // .then(items => this.setData({ items }))
         .then(items => this.setData({ items }))
+        .then(() => {
+          this.setData({
+            sortName: '倒序',
+            sortType: SORT_TYPE_DES
+          })
+        })
         .catch(console.error);
-      this.setData({
-        sortName: '倒序',
-        sortType: SORT_TYPE_DES
-      })
     }
 
   },
